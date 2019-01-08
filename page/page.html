@@ -1,0 +1,146 @@
+<div class="page">
+    <h2>页面</h2>
+    <h3>如何跳转至页面:Zframe.to()</h3>
+    <p>
+        跳转至页面的方式有2种<br>
+        第1种：a超链接，和传统的html一样，a链接点击后会自动识别链接内的地址，并作为下一个页面加载，非a元素，只要元素有href属性，都会识别点击并跳转至href所指向的页面<br>
+        第2种：Zframe.to('页面路径',p参数,h参数)，p参数等同于地址栏参数，h参数等同于hash参数<br>
+        <span style="color: red">注：若第一种方式内的href的值为http开头的完整地址，则框架会不拦截，转而浏览器跳转至该完整网址。</span><br>
+    </p>
+
+    <h3>初始化</h3>
+    <p>
+        单个页面分2部分，html部分和js代码部分<br>
+        初始页面代码如下：
+    </p>
+    <pre>
+&lt;div class="page"&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    Zframe.use('page/page',{
+        title:"首页",
+        data:{},
+        src:{
+            js:[],
+            css:[],
+        },
+        on_load:function(){
+        }
+    })
+&lt;/script&gt;
+    </pre>
+    <h3>页面模板</h3>
+    <p>
+        页面文件必须由&lt;div class="page"&gt;&lt;/div&gt;包裹，内部模板制作参考<a href="http://Ztempl.qizoubixia.top">Ztempl</a>，和<a href="page/templ.html">模板制作说明</a>。
+    </p>
+    <h3>注册页面：Zframe.use('页面名',{参数})</h3>
+    <p>
+        页面名为当前页面的完整路径，不需要“.html”。<br>
+        所有页面逻辑以及代码写在{参数}里，类似微信小程序开发。
+    </p>
+    <table>
+        <thead>
+        <tr>
+            <th>参数</th>
+            <th>类型</th>
+            <th>功能</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>title</td>
+            <td>String</td>
+            <td>当前页面的title</td>
+        </tr>
+        <tr>
+            <td>data</td>
+            <td>Object</td>
+            <td>当前页面模板所绑定的数据</td>
+        </tr>
+        <tr>
+            <td>src</td>
+            <td>{js:[],css:[],}</td>
+            <td>js为当前页面需要调用的js文件地址数组，css为当前页面需要的css文件地址数组</td>
+        </tr>
+        <tr>
+            <td>scroll_elem</td>
+            <td>css选择器</td>
+            <td>同app_config的scroll_elem，当前页面内滚动识别容器，用于触发框架内的上滑触底和下拉事件触发</td>
+        </tr>
+        <tr>
+            <td>template</td>
+            <td>String</td>
+            <td>页面使用模板的字符串，若设置了模板字符串则上面自动识别的模板会失效</td>
+        </tr>
+        <tr>
+            <td>swipe_page</td>
+            <td>String</td>
+            <td>同app_config内的swipe_page，该页面的切换动画</td>
+        </tr>
+
+        <tr>
+            <td>生命周期/事件函数</td>
+            <td>Function</td>
+            <td>见下</td>
+        </tr>
+        </tbody>
+    </table>
+    <h3>页面生命周期/事件</h3>
+    <p>
+        on_load:function(Object query,Object hash)：页面加载完成后执行一次；<br>
+        on_show:function(Object query,Object hash)：页面每次显示时执行一次；<br>
+        on_reachbottom:function(Int scrollTop)：页面触底时执行；<br>
+        on_scroll:function(Int scrollTop)：页面每次滚动时执行一次；<br>
+    </p>
+    <table>
+        <thead>
+        <tr>
+            <th>参数</th>
+            <th>类型</th>
+            <th>功能</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>query</td>
+            <td>Object</td>
+            <td>地址栏的query参数或Zframe.to()设置的q参数</td>
+        </tr>
+        <tr>
+            <td>hash</td>
+            <td>Object</td>
+            <td>地址栏的hash参数或Zframe.to()设置的h参数,(pagePath为内定当前页面的路径的h参数)</td>
+        </tr>
+        <tr>
+            <td>scrollTop</td>
+            <td>Int</td>
+            <td>滚动高度</td>
+        </tr>
+        </tbody>
+    </table>
+    <h3>模板</h3>
+    <p>
+        模板的数值绑定，条件循环的等绑定参考<a href="http://ztempl.qizoubixia.top/">Ztempl文档</a><br>
+        以下为Zframe提供的额外功能
+    </p>
+    <h3>绑定事件：Zevent</h3>
+    <p>
+        &lt;div Zevent='click|testevent'&gt;&lt;/div&gt;，元素增加Zevent属性值由"事件名"+"|"+"方法名"组合，当该元素触发指定事件(click)时触发页面参数内的指定方法(testevent)。
+    </p>
+    <h3>绑定事件：Zevent</h3>
+    <p>
+
+    </p>
+
+
+    <a href="page/init.html">下一步：初始化</a>
+</div>
+<script>
+    Zframe.use('page/page',{
+        title:"首页",
+        data:{},
+        src:{},
+        on_load:function(){
+        }
+    })
+</script>

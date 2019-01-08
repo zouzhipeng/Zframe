@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,viewport-fit=cover"/>
+    <title></title>
+    <script src="js/flexible.js"></script>
+    <link href="css/style.css?v=1" rel="stylesheet">
+    <link href="css/frame.css" rel="stylesheet">
+    <link href="js/swiper/css/swiper.css"  rel="stylesheet"/>
+    <link href="//at.alicdn.com/t/font_924184_ega7mwm1mu4.css"  rel="stylesheet"/>
+
+</head>
+<body>
+<div id="app"></div>
+</body>
+<script src="js/polifill.js"></script>
+<script src="js/app_config.js"></script>
+<script src="js/qiniu.min.js"></script>
+<script src="js/common.js?v=1"></script>
+<script src="js/jquery-1.11.0.js"></script>
+<script src="//Ztempl.qizoubixia.top/Ztempl.js"></script>
+<script src="../Zframe.js?v=4"></script>
+
+<script> 
+    app_config.version = "1.0.16";
+    //app_config.version = (new Date()).format('yyyyMMddhhmmss');
+    //全局顶部菜单事件
+    Zpage.prototype.switch_share = function(){
+        !this.data.show_menu&&(this.data.show_menu = 0);
+        this.data.show_menu = !this.data.show_menu;
+    };
+
+    Zframe.load_template({
+        'header_menu':'template/header_menu.html',
+    },function(){
+        Zframe.init("app",{
+            swipe_page:'Left',
+        }).to('page/index');
+    });
+
+    $('body').on('click','.back',function(){
+        history.back();
+    })
+</script>
+</html>

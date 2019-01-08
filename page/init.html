@@ -1,0 +1,90 @@
+<div class="page">
+    <h2>初始化</h2>
+    <h2>入口文件配置</h2>
+    <p>
+        首先创建入口文件可以和正常文件一样，写html的header,title等元素，也可以引用一些公用的js，css组件<br>
+        建议使用index.html等默认主页文件做入口文件<br>
+        入口文件body处写入一个&lt;div id="app"&gt;&lt;/div&gt;作为多页面呈现的容器，也可以编辑好一个模板（包含菜单，导航等），由模板内的一块元素设置id为容器。
+    </p>
+    <h3>如何使用</h3>
+    <p>
+        然后在入口文件引入Ztempl.js模板组件文件，再引入Zframe.js框架文件。<br>
+    <div>
+&lt;script type="text/javascript" src="//Ztempl.qizoubixia.top/Ztempl.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="Zframe.js"&gt;&lt;/script&gt;
+                    </div>
+    </p>
+    <h3>初始化</h3>
+    <p>Zframe.init('单页面容器id',{参数})</p>
+    <p>完成初始化后通过.to(),直接跳转至首页。（例子的首页路径为“page/home”）</p>
+    <pre>
+    app_config.version = "1.0.13";
+    Zframe.init("app",{
+        swipe_page:'Left',
+    }).to('page/home');
+                    </pre>
+    </p>
+    <table>
+        <thead>
+        <tr>
+            <th>参数</th>
+            <th>值</th>
+            <th>功能</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>swipe_page</td>
+            <td>Left</td>
+            <td>设置页面渐入渐出CSS动画class，渐入：“fadeIn值”（fadeInLeft），渐出：“fadeIn值”（fadeInLeft），若设置了动画class则该样式内必须包含动画效果，否则会无法正常跳转</td>
+        </tr>
+        </tbody>
+    </table>
+    <h3>环境配置</h3>
+    <p>
+        新建一个配置变量：app_config，也可以单独引入一个app_config.js<br>
+    <pre>
+var app_config = {
+	domain:"http://zframe.qizoubixia.top/",
+	version:"1.0.2",
+	scroll_elem:".page",
+};
+                    </pre>
+    </p>
+    <table>
+        <thead>
+        <tr>
+            <th>参数</th>
+            <th>值</th>
+            <th>功能</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>domain</td>
+            <td>http://zframe.qizoubixia.top/</td>
+            <td>站点域名，用于跳转时识别页面路径</td>
+        </tr>
+        <tr>
+            <td>version</td>
+            <td>1.0.0</td>
+            <td>版本号，用于版本变更后，重载所有静态资源（若app_config保存于js静态文件内，由于防止版本号被缓存，建议版本号在入口文件独立赋值！）</td>
+        </tr>
+        <tr>
+            <td>scroll_elem</td>
+            <td>.page</td>
+            <td>每个页面内滚动识别容器，用于触发框架内的上滑触底和下拉事件触发</td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="page/init.html">下一步：页面</a>
+</div>
+<script>
+    Zframe.use('page/init',{
+        title:"初始化",
+        data:{},
+        src:{},
+        on_load:function(){
+        }
+    })
+</script>
