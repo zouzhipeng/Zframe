@@ -1,0 +1,95 @@
+@import "//at.alicdn.com/t/font_929827_5er0us26t2s.css";
+
+*{box-sizing: border-box;-webkit-tap-highlight-color:rgba(0,0,0,0)}
+body,dl,dd,ul,ol,h1,h2,h3,h4,h5,h6,pre,form,input,textarea,p,hr,thead,tbody,tfoot,th,td{margin:0;padding:0;}
+ul,ol{list-style:none;}
+a{text-decoration:none;}
+a{color: #515151;}
+body{
+    color: #515151;
+    max-width: 750px;
+    margin:auto;
+}
+input{
+    color: #515151;
+    outline: none;
+}
+
+
+
+/***************************框架及动画***************************/
+html,body{height: 100%;}
+#app,#app>div{
+    overflow: auto;
+}
+.fadeInLeft{
+    animation-duration: .3s;
+    animation-fill-mode: both;
+    animation-name: fadeInLeft;
+}
+.fadeOutLeft{
+    position: absolute;
+    width: 100%;
+    animation-duration: .3s;
+    animation-fill-mode: both;
+    animation-name: fadeOutLeft;
+}
+
+/*translate3d下nav_bar错位问题*/
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translate3d(30%, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@-webkit-keyframes fadeInLeft /* Safari 和 Chrome */
+{
+    from {
+        opacity: 0;
+        transform: translate3d(30%, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes fadeOutLeft {
+    from {
+        opacity: 1;
+        transform: none;
+    }
+    to {
+        opacity: 0;
+        transform: translate3d(-30%, 0, 0);
+    }
+}
+@-webkit-keyframes fadeOutLeft /* Safari 和 Chrome */
+{
+    from {
+        opacity: 1;
+        transform: none;
+    }
+    to {
+        opacity: 0;
+        transform: translate3d(-30%, 0, 0);
+    }
+}
+
+.page{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.page-body{
+    flex-grow: 1;
+    overflow: auto;
+    position: relative;
+}

@@ -1,0 +1,5 @@
+*.txt
+node_modules/
+.idea/
+.vscode/
+.cache-loader/
